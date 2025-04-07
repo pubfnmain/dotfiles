@@ -1,0 +1,25 @@
+"ui" = { bg = "#1f1f1f", fg = "#efefef" }
+"ui.selection" = { bg = "#3f3f3f" }
+"ui.cursor" = { bg = "#efefef", fg = "#1f1f1f" }
+"ui.linenr" = "#7f7f7f"
+"ui.linenr.selected" = "#efefef"
+"ui.menu" = { bg = "#3f3f3f" }
+"ui.menu.selected" = { bg = "#7f7f7f" }
+"ui.statusline" = { bg = "#3f3f3f" }
+"ui.bufferline" = { bg = "#3f3f3f" }
+"ui.bufferline.active" = { bg = "#7f7f7f" }
+
+"string" = "#7fef7f"
+"constant" = "#7fef7f"
+
+"keyword" = "#ef7f7f"
+
+"function" = "#7f7fef"
+"constructor" = "#7f7fef"
+"type" = "#7f7fef"
+
+"comment" = "#7f7f7f"
+"warning" = "#ef7f7f"
+"error" = "#ef7f7f"
+"diagnostic.error" = "#ef7f7f"
+"diagnostic.warning" = "#ef7f7f"

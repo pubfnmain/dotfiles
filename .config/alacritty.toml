@@ -1,0 +1,28 @@
+[colors.primary]
+foreground = "#efefef"
+background = "#1f1f1f"
+
+[colors.selection]
+foreground = "#efefef"
+background = "#3f3f3f"
+
+[font]
+size = 16
+
+[font.normal]
+family = "JetBrains Mono"
+
+[window.padding]
+x = 32
+y = 32
+
+[cursor]
+blink_interval = 500
+blink_timeout = 0
+
+[cursor.style]
+blinking = "Always"
+
+[terminal.shell]
+program = "bash"
+args = ["-l"]

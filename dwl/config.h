@@ -9,11 +9,11 @@ static const int bypass_surface_visibility = 0;  /* 1 means idle inhibitors will
 static const unsigned int borderpx         = 2;  /* border pixel of windows */
 static const unsigned int gaps             = 32;
 static const float rootcolor[]             = COLOR(0x0f0f0fff);
-static const float bordercolor[]           = COLOR(0x7f7f7fff);
-static const float focuscolor[]            = COLOR(0x7f0fefff);
-static const float urgentcolor[]           = COLOR(0xff0000ff);
+static const float bordercolor[]           = COLOR(0x3f3f3fff);
+static const float focuscolor[]            = COLOR(0x7f7f7fff);
+static const float urgentcolor[]           = COLOR(0x7f0fefff);
 /* This conforms to the xdg-protocol. Set the alpha to zero to restore the old behavior */
-static const float fullscreen_bg[]         = COLOR(0x0f0f0fff); /* You can also use glsl colors */
+static const float fullscreen_bg[]         = COLOR(0x1f1f1fff); /* You can also use glsl colors */
 
 /* tagging - TAGCOUNT must be no greater than 31 */
 #define TAGCOUNT (3)
@@ -22,7 +22,7 @@ static const float fullscreen_bg[]         = COLOR(0x0f0f0fff); /* You can also 
 static int log_level = WLR_ERROR;
 
 static const Rule rules[] = {
-	{ "chromium", NULL, 1 << 2, 0, -1 },
+	{ "none", NULL, 1 << 2, 0, -1 },
 };
 
 /* layout(s) */
@@ -118,7 +118,7 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 
 /* commands */
 static const char *termcmd[] = { "alacritty", NULL };
-static const char *menucmd[] = { "wmenu-run", "-f", "Commit Mono 16", "-N", "0f0f0f", "-n", "efefef", "-S", "7f0fef", "-s", "efefef", NULL };
+static const char *menucmd[] = { "wl-script", "menu", NULL };
 
 static const Key keys[] = {
 	/* Note that Shift changes certain key codes: c -> C, 2 -> at, etc. */

@@ -1,0 +1,13 @@
+theme = "payne"
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor]
+bufferline = "always"
+
+[editor.statusline]
+left = ["mode", "spinner"]
+

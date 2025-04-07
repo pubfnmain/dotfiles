@@ -1,5 +1,11 @@
 #!/bin/sh
 
+FONT="JetBrains Mono 16"
+NBG="3f3f3f"
+NFG="efefef"
+SBG="7f7f7f"
+SFG="${NFG}"
+
 get_tag_name() {
 	case $1 in
 		1) echo SH ;;
@@ -21,7 +27,9 @@ timer() {
 		out=$(cat ~/.cache/dwl)
 		date=$(date +%R)
 		bat=$(cat /sys/class/power_supply/BAT0/capacity)
-		echo "  BAT ${bat} | ${date}  " > ~/.cache/info
+		lgt=$($(cat /sys/class/backlight/amdgpu_bl1/brightness) * 100 / 255)
+
+		echo "  [ VOL 100 ] [ LGT 100 ] [ BAT ${bat} ] [ ${date} ]  " > ~/.cache/info
 		print
 		sleep 3
 	done
@@ -45,7 +53,6 @@ stdin() {
 				;;
 			*title*)
 				title="$(echo "${line}" | cut -d ' ' -f 3- | tr -cd '\0-\177')"
-				#title="Шервуд - (12595)"
 				;;
 			*layout*)
 				layout=$(echo $line | cut -d ' ' -f 3)
@@ -61,5 +68,17 @@ msg() {
 	stdin
 }
 
-# swaybg -i ~/wallpapers/wallpaper.svg &
-msg | ergo -f "JetBrains Mono 16" -N 1f1f28 -n dcd7ba -S 727169 -s dcd7ba
+menu() {
+	wmenu-run -f "${FONT}" -N $NBG -n $NFG -S $SBG -s $SFG
+}
+
+init() {
+	# swaybg -i ~/wallpapers/wallpaper.jpg -m fit &
+	msg | ergo -f "${FONT}" -N $NBG -n $NFG -S $SBG -s $SFG
+}
+
+light() {
+	sudo sh -c "echo ${1} > /sys/class/backlight/amdgpu_bl1/brightness"
+}
+
+$@
