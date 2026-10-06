@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
-# Link dotfiles into $HOME. Idempotent; never clobbers a real file or directory.
 set -euo pipefail
 
 DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-# "<path in repo>:<path relative to $HOME>"
 LINKS=(
   "nvim:.config/nvim"
   "tmux:.config/tmux"
