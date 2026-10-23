@@ -31,6 +31,19 @@ o.timeoutlen = 400
 
 o.mouse = 'a'
 o.clipboard = 'unnamedplus'
+
+-- WSL has no default clipboard provider; bridge to Windows clipboard
+if vim.fn.has('wsl') == 1 then
+  vim.g.clipboard = {
+    name = 'WslClipboard',
+    copy = { ['+'] = 'clip.exe', ['*'] = 'clip.exe' },
+    paste = {
+      ['+'] = 'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+      ['*'] = 'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+    },
+    cache_enabled = 0,
+  }
+end
 o.confirm = true
 
 vim.diagnostic.config({
