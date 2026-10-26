@@ -5,8 +5,6 @@ DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 LINKS=(
   "nvim:.config/nvim"
-  "tmux:.config/tmux"
-  "fish/config.fish:.config/fish/config.fish"
   "pi/settings.json:.pi/agent/settings.json"
   "pi/AGENTS.md:.pi/agent/AGENTS.md"
   "pi/extensions:.pi/agent/extensions"

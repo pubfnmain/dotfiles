@@ -1,8 +1,8 @@
 {
-  "lastChangelogVersion": "1.0.4",
+  "lastChangelogVersion": "1.2.0",
   "theme": "dark",
   "defaultProvider": "deepseek",
-  "defaultModel": "deepseek-flash",
+  "defaultModel": "deepseek-v4-pro",
   "packages": [
     {
       "source": "git:github.com/DietrichGebert/ponytail",
@@ -10,7 +10,6 @@
         "!skills/ponytail"
       ]
     },
-    "git:github.com/MasuRii/pi-rtk-optimizer",
     "npm:pi-cache-optimizer"
   ]
 }
