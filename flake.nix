@@ -121,6 +121,7 @@
         plugins.treesitter.enable = true;
         plugins.telescope.enable = true;
         plugins.mini-pick.enable = true;
+        plugins.mini-tabline.enable = true;
         plugins.web-devicons.enable = true;
         plugins.lspconfig.enable = true;
         plugins.blink-cmp = {
