@@ -70,6 +70,8 @@
           font-size = 15;
           shell-integration = "detect";
           font-family = "Iosevka Extended";
+          # Iosevka cv47 picks the lowercase l variant, 7 = tailed
+          font-feature = "cv47=7";
           font-shaping-break = "no-cursor";
         };
       };
