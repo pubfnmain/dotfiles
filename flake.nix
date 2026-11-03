@@ -114,12 +114,33 @@
           shiftwidth = 2;
         };
 
-        colorschemes.catppuccin.enable = true;
+        # nixvim has no mellow module, load plugin directly to match Ghostty theme
+        extraPlugins = [ pkgs.vimPlugins.mellow-nvim ];
+        colorscheme = "mellow";
         plugins.lualine.enable = true;
         plugins.treesitter.enable = true;
         plugins.telescope.enable = true;
         plugins.web-devicons.enable = true;
         plugins.lspconfig.enable = true;
+        plugins.blink-cmp = {
+          enable = true;
+          settings = {
+            keymap = {
+              preset = "enter";
+              "<Tab>" = [ "select_next" "snippet_forward" "fallback" ];
+              "<S-Tab>" = [ "select_prev" "snippet_backward" "fallback" ];
+            };
+            completion = {
+              menu.draw.columns = [
+                { __unkeyed-1 = "label"; __unkeyed-2 = "label_description"; gap = 1; }
+                [ "kind" ]
+              ];
+              documentation = { auto_show = true; auto_show_delay_ms = 200; };
+            };
+            signature.enabled = true;
+            sources.default = [ "lsp" "path" "snippets" "buffer" ];
+          };
+        };
 
         lsp.servers = {
           ts_ls.enable = true;
