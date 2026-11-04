@@ -49,6 +49,7 @@
 
       home.packages = with pkgs; [
         claude-code
+        just
 	nodejs
         postgresql
       ];
