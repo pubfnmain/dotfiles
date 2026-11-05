@@ -12,6 +12,17 @@
   # chromium/electron wrappers in nixpkgs switch to native Wayland when this is set
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
+  # Google as default search; recommended (not managed) so it stays changeable in settings
+  programs.chromium = {
+    enable = true;
+    extraOptsRecommended = {
+      DefaultSearchProviderEnabled = true;
+      DefaultSearchProviderName = "Google";
+      DefaultSearchProviderSearchURL = "https://www.google.com/search?q={searchTerms}";
+      DefaultSearchProviderSuggestURL = "https://www.google.com/complete/search?output=chrome&q={searchTerms}";
+    };
+  };
+
   home-manager.users.${username} = {
     imports = [ ./home.nix ];
     programs.chromium = {

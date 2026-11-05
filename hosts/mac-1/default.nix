@@ -9,6 +9,14 @@
   # applies after logout/login
   system.defaults.NSGlobalDomain.AppleInterfaceStyle = "Dark";
   system.defaults.NSGlobalDomain.AppleInterfaceStyleSwitchesAutomatically = false;
+
+  # Google as default search; unforced user defaults load as recommended policy, changeable in settings
+  system.defaults.CustomUserPreferences."org.chromium.Chromium" = {
+    DefaultSearchProviderEnabled = true;
+    DefaultSearchProviderName = "Google";
+    DefaultSearchProviderSearchURL = "https://www.google.com/search?q={searchTerms}";
+    DefaultSearchProviderSuggestURL = "https://www.google.com/complete/search?output=chrome&q={searchTerms}";
+  };
   users.users.${username}.home = "/Users/${username}";
 
   system.stateVersion = 6;
