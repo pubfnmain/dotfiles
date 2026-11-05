@@ -14,7 +14,16 @@
 
   home-manager.users.${username} = {
     imports = [ ./home.nix ];
-    programs.chromium.package = pkgs.ungoogled-chromium;
+    programs.chromium = {
+      package = pkgs.ungoogled-chromium;
+      # bake in what NIXOS_OZONE_WL adds, it doesn't reach chromium in every launch path
+      # and without it chromium falls back to X11, which niri doesn't provide
+      commandLineArgs = [
+        "--ozone-platform-hint=auto"
+        "--enable-features=WaylandWindowDecorations"
+        "--enable-wayland-ime=true"
+      ];
+    };
   };
 
   users.users.${username} = {
