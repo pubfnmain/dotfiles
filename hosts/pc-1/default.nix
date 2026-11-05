@@ -10,7 +10,10 @@
 
   programs.niri.enable = true;
 
-  home-manager.users.${username}.programs.chromium.package = pkgs.ungoogled-chromium;
+  home-manager.users.${username} = {
+    imports = [ ./home.nix ];
+    programs.chromium.package = pkgs.ungoogled-chromium;
+  };
 
   users.users.${username} = {
     isNormalUser = true;
