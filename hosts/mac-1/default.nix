@@ -5,6 +5,10 @@
   '';
 
   system.primaryUser = username;
+
+  # applies after logout/login
+  system.defaults.NSGlobalDomain.AppleInterfaceStyle = "Dark";
+  system.defaults.NSGlobalDomain.AppleInterfaceStyleSwitchesAutomatically = false;
   users.users.${username}.home = "/Users/${username}";
 
   system.stateVersion = 6;

@@ -2,6 +2,12 @@
 { pkgs, ... }: {
   home.packages = [ pkgs.wmenu ];
 
+  # writes gtk3/4 prefer-dark and dconf color-scheme, which the portal hands to chromium/electron
+  gtk = {
+    enable = true;
+    colorScheme = "dark";
+  };
+
   # niri ignores its built-in defaults once this file exists, so start from upstream's
   # default config and swap the launchers; --replace-fail flags upstream changes on bump
   xdg.configFile."niri/config.kdl".source = pkgs.runCommand "niri-config.kdl" { } ''
