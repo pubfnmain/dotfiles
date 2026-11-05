@@ -6,6 +6,7 @@
     claude-code
     just
     nodejs
+    obsidian
     postgresql
   ];
 
