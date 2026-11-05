@@ -36,5 +36,15 @@
         homeManager
       ];
     };
+
+    nixosConfigurations."pc-1" = nixpkgs.lib.nixosSystem {
+      inherit specialArgs;
+      modules = [
+        ./modules/common.nix
+        ./hosts/pc-1
+        home-manager.nixosModules.home-manager
+        homeManager
+      ];
+    };
   };
 }
