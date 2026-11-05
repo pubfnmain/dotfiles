@@ -9,6 +9,8 @@
   networking.wireless.iwd.enable = true;
 
   programs.niri.enable = true;
+  # chromium/electron wrappers in nixpkgs switch to native Wayland when this is set
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   home-manager.users.${username} = {
     imports = [ ./home.nix ];
