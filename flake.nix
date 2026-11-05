@@ -121,9 +121,6 @@
         plugins.lualine.enable = true;
         plugins.treesitter.enable = true;
         plugins.telescope.enable = true;
-        plugins.mini-pick.enable = true;
-        plugins.mini-tabline.enable = true;
-        plugins.web-devicons.enable = true;
         plugins.lspconfig.enable = true;
         plugins.blink-cmp = {
           enable = true;
@@ -150,6 +147,33 @@
           gopls.enable = true;
           rust_analyzer.enable = true;
         };
+
+        # buffer list tabline, replaces mini.tabline
+        # no '' in Lua below: it would end the Nix string
+        extraConfigLua = ''
+          function _G.BufTabline()
+            local parts = {}
+            local cur = vim.api.nvim_get_current_buf()
+            for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+              if vim.bo[buf].buflisted then
+                local name = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(buf), ":t")
+                if name == "" then name = "[No Name]" end
+                if vim.bo[buf].modified then name = name .. " +" end
+                local hl = buf == cur and "%#TabLineSel#" or "%#TabLine#"
+                -- %N@fn@ makes label clickable, passes buf as minwid; %% escapes % in names
+                table.insert(parts, hl .. "%" .. buf .. "@v:lua.BufTablineClick@ " .. name:gsub("%%", "%%%%") .. " %T")
+              end
+            end
+            return table.concat(parts) .. "%#TabLineFill#"
+          end
+
+          function _G.BufTablineClick(buf)
+            vim.api.nvim_set_current_buf(buf)
+          end
+
+          vim.o.showtabline = 2
+          vim.o.tabline = "%!v:lua.BufTabline()"
+        '';
       };
     };
   in
