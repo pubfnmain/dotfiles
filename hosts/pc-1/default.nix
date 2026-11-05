@@ -10,6 +10,8 @@
 
   programs.niri.enable = true;
 
+  home-manager.users.${username}.programs.chromium.package = pkgs.ungoogled-chromium;
+
   users.users.${username} = {
     isNormalUser = true;
     # wheel also grants iwctl access via iwd's D-Bus policy

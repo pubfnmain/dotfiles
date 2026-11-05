@@ -34,6 +34,22 @@
     hash = "sha256-B7B6K7Ee4uJlW8zzLP3ILgddnbcIQyNimY+rVllzbR0=";
   };
 
+  programs.chromium = {
+    enable = true;
+    # ungoogled-chromium can't install from the Web Store, so pin the crx; bump version, url and hash together
+    extensions = [
+      {
+        id = "nngceckbapebfimnlniiiahkandclblb"; # bitwarden
+        version = "2026.10.2";
+        crxPath = pkgs.fetchurl {
+          name = "bitwarden-2026.10.2.crx";
+          url = "https://clients2.googleusercontent.com/crx/blobs/ARGaeZKrZCDk7UJWQXzUQ8_0pOOy6h1s3wvynvj3vqcHsuSvjGAmX2lV7s6ji5YP7A7DtxD42g7KMQK_5GXm_vg2NDXXdpmUbI8KoV-GsJ1nYSJ_koU3RksuUv-S7IUYLaPkAMZSmuXJX4rmXGST-41wO8smk2xEA2h2yA/NNGCECKBAPEBFIMNLNIIIAHKANDCLBLB_2026_10_2_0.crx";
+          hash = "sha256-HJlRefdYYxBMim44nhBQVoqCwNLAfWrPa2JwPSSUMMk=";
+        };
+      }
+    ];
+  };
+
   programs.fish = {
     enable = true;
     shellAliases.cd = "z";
