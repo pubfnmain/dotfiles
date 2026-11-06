@@ -4,6 +4,8 @@
     pkgs.wmenu
     # gcc provides cc, which rustc links with; macOS gets it from the Xcode CLT
     pkgs.gcc
+    # mac-1 uses the native macOS app from the telegram cask instead
+    pkgs.telegram-desktop
     # status bar, spawned by name from niri/config.kdl
     ergo.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];

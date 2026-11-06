@@ -8,7 +8,6 @@
     nodejs
     obsidian
     postgresql
-    telegram-desktop
     # toolchains install to ~/.cargo, already on PATH via fish shellInit
     rustup
   ];

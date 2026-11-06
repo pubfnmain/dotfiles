@@ -23,7 +23,8 @@
   # apps missing from nixpkgs; nix-darwin drives brew but Homebrew itself is installed by hand
   homebrew = {
     enable = true;
-    casks = [ "affinity" ];
+    # telegram is the native macOS client, not the Qt telegram-desktop pc-1 gets from nixpkgs
+    casks = [ "affinity" "telegram" "ungoogled-chromium" ];
   };
 
   users.users.${username}.home = "/Users/${username}";
