@@ -6,6 +6,9 @@
 
   system.primaryUser = username;
 
+  services.tailscale.enable = true;
+  services.openssh.enable = true;
+
   # applies after logout/login
   system.defaults.NSGlobalDomain.AppleInterfaceStyle = "Dark";
   system.defaults.NSGlobalDomain.AppleInterfaceStyleSwitchesAutomatically = false;
@@ -17,6 +20,12 @@
     DefaultSearchProviderSearchURL = "https://www.google.com/search?q={searchTerms}";
     DefaultSearchProviderSuggestURL = "https://www.google.com/complete/search?output=chrome&q={searchTerms}";
   };
+  # apps missing from nixpkgs; nix-darwin drives brew but Homebrew itself is installed by hand
+  homebrew = {
+    enable = true;
+    casks = [ "affinity" ];
+  };
+
   users.users.${username}.home = "/Users/${username}";
 
   system.stateVersion = 6;

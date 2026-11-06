@@ -8,7 +8,17 @@
   # iwd only handles wifi auth, dhcpcd (NixOS default) still assigns addresses
   networking.wireless.iwd.enable = true;
 
+  services.tailscale.enable = true;
+  services.openssh.enable = true;
+
   programs.niri.enable = true;
+  # niri has no font option, its UI text is hardcoded to "sans 14px"; --replace-fail flags upstream changes on bump
+  programs.niri.package = pkgs.niri.overrideAttrs (old: {
+    postPatch = (old.postPatch or "") + ''
+      substituteInPlace src/ui/{config_error_notification,exit_confirm_dialog,hotkey_overlay,mru,screenshot_ui}.rs \
+        --replace-fail '"sans 14px"' '"Iosevka Extended 14px"'
+    '';
+  });
   # chromium/electron wrappers in nixpkgs switch to native Wayland when this is set
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 

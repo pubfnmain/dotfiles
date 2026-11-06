@@ -1,5 +1,25 @@
 {
   "nodes": {
+    "ergo": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1766068361,
+        "narHash": "sha256-hi0o8lqIiG9kcf1L2hy+o1YpVQ7WxFpuP2mUnDq4LvA=",
+        "owner": "pubfnmain",
+        "repo": "ergo",
+        "rev": "27c5052832b782c5015e5b9a0dba469296e6149a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pubfnmain",
+        "repo": "ergo",
+        "type": "github"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -116,6 +136,7 @@
     },
     "root": {
       "inputs": {
+        "ergo": "ergo",
         "home-manager": "home-manager",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs",
